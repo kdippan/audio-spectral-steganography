@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 | System Failure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        body {
+            background-color: #000;
+            color: #ff3333; /* Red for Error */
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 6rem;
+            margin: 0;
+            animation: glitch 1s infinite;
+        }
+        p { color: #666; max-width: 400px; margin-bottom: 2rem; }
+        
+        .btn {
+            background: transparent;
+            border: 2px solid #ff3333;
+            color: #ff3333;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex; align-items: center; gap: 8px;
+            transition: 0.2s;
+        }
+        .btn:hover { background: #ff3333; color: black; }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+    </style>
+</head>
+<body>
+    <i data-feather="alert-triangle" style="width: 64px; height: 64px; margin-bottom: 1rem;"></i>
+    <h1>500</h1>
+    <h2>Modulation Error</h2>
+    <p>Internal transmitter failure. The server overloaded while processing the spectral data.</p>
+    <a href="/" class="btn"><i data-feather="refresh-cw"></i> Retry Connection</a>
+    <script>feather.replace();</script>
+</body>
+</html>
