@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSTV Pro | Free Audio Steganography Tool (Online Encoder/Decoder)</title>
+    
+    <meta name="title" content="SSTV Pro | Free Audio Steganography Tool">
+    <meta name="description" content="Hide images and text inside audio files securely using spectral steganography. Free online SSTV encoder and spectrogram decoder. No server uploads required.">
+    <meta name="keywords" content="audio steganography, spectrogram decoder, hide image in audio, sstv encoder, spectral analysis, sound encryption, wav steganography, cybersecurity tool">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Dippan Bhusal">
+    <link rel="canonical" href="https://spectrograph.dippanbhusal.tech/">
+    
+    <meta name="theme-color" content="#F8F9FA" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F0F0F" media="(prefers-color-scheme: dark)">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://spectrograph.dippanbhusal.tech/">
+    <meta property="og:title" content="SSTV Pro | Audio Steganography Tool">
+    <meta property="og:description" content="Hide images and text inside audio files securely using spectral steganography. Free online spectrogram decoder.">
+    <meta property="og:image" content="https://spectrograph.dippanbhusal.tech/sstv-DippanBhusal.jpg">
+    <meta property="og:site_name" content="SSTV Pro">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://spectrograph.dippanbhusal.tech/">
+    <meta property="twitter:title" content="SSTV Pro | Audio Steganography Tool">
+    <meta property="twitter:description" content="Hide images and text inside audio files securely using spectral steganography. Free online spectrogram decoder.">
+    <meta property="twitter:image" content="https://spectrograph.dippanbhusal.tech/sstv-DippanBhusal.jpg">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64x64.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="/favicon-128x128.png">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/favicon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/favicon-256x256.png">
+    <link rel="icon" type="image/png" sizes="384x384" href="/favicon-384x384.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon-144x144.png">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SSTV Pro",
+      "url": "https://spectrograph.dippanbhusal.tech/",
+      "author": {
+        "@type": "Person",
+        "name": "Dippan Bhusal",
+        "url": "https://github.com/KDippan"
+      },
+      "description": "A free, client-side web tool for hiding images and text inside audio files using spectrographic steganography.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "image": "https://spectrograph.dippanbhusal.tech/sstv-DippanBhusal.jpg",
+      "featureList": "Audio Encoding, Spectrogram Decoding, Steganography, WAV Export"
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        :root {
+            /* Light Theme (Default) */
+            --primary: #FFD700;
+            --primary-hover: #E6C200;
+            --bg: #F8F9FA;
+            --surface: #FFFFFF;
+            --text: #111111;
+            --text-muted: #666666;
+            --border: #E0E0E0;
+            --radius: 16px;
+            --shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+            --code-bg: #F1F3F5;
+        }
+
+        [data-theme="dark"] {
+            --primary: #FFD700;
+            --primary-hover: #E6C200;
+            --bg: #0F0F0F;
+            --surface: #1A1A1A;
+            --text: #F0F0F0;
+            --text-muted: #A0A0A0;
+            --border: #333333;
+            --shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+            --code-bg: #252525;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); } }
+
+        /* --- HEADER & THEME TOGGLE --- */
+        header {
+            background: var(--surface);
+            padding: 1rem 5%;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background 0.3s, border 0.3s;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.5px;
+            color: var(--text);
+        }
+        .brand span { color: var(--primary); }
+
+        .header-controls { display: flex; align-items: center; gap: 1rem; }
+
+        .theme-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.2s;
+        }
+        .theme-btn:hover { background: var(--bg); border-color: var(--text-muted); }
+
+        /* --- MAIN UI --- */
+        main {
+            flex: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+        .tab-btn {
+            border: none;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 10px 24px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .tab-btn.active {
+            background: var(--primary);
+            color: black;
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .view-section { display: none; }
+        .view-section.active { display: block; animation: fadeIn 0.4s ease; }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        /* --- ENCODER STYLES --- */
+        .enc-content { padding: 2rem; }
+        .upload-box {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            background: var(--bg);
+            margin-bottom: 1.5rem;
+            transition: 0.2s;
+        }
+        .upload-box:hover { border-color: var(--primary); }
+        .upload-box.has-file { border-style: solid; border-color: var(--primary); background: rgba(255, 215, 0, 0.05); }
+        
+        /* --- DECODER STYLES --- */
+        .spectrogram-wrapper {
+            position: relative;
+            background: #000;
+            height: 400px;
+            border-bottom: 1px solid #333;
+        }
+        canvas { display: block; width: 100%; height: 100%; }
+        
+        .placeholder-state {
+            position: absolute; inset: 0;
+            background: var(--surface);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            z-index: 10;
+        }
+
+        /* --- CONTROLS --- */
+        .controls-bar {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .btn-play {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            color: black;
+            transition: transform 0.2s;
+        }
+        .btn-play:hover { transform: scale(1.1); }
+        .btn-play:disabled { background: var(--border); cursor: not-allowed; transform: none; }
+
+        input[type="range"] { -webkit-appearance: none; background: transparent; cursor: pointer; width: 100%; }
+        .prog-track {
+            height: 6px; background: var(--border);
+            border-radius: 3px; position: relative;
+        }
+        .prog-track::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 16px; width: 16px;
+            background: var(--primary); border-radius: 50%; margin-top: -5px;
+        }
+
+        /* --- SEO CONTENT SECTION --- */
+        .seo-content {
+            margin-top: 4rem;
+            border-top: 1px solid var(--border);
+            padding-top: 3rem;
+        }
+        
+        .seo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--text); }
+        h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text); }
+        p { line-height: 1.6; color: var(--text-muted); margin-bottom: 1rem; }
+        
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            background: var(--surface);
+        }
+        .faq-question {
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex; justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            padding: 0 1.5rem 1rem 1.5rem;
+            color: var(--text-muted);
+            display: none;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+        .faq-item.open .faq-answer { display: block; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 4rem 1rem 2rem 1rem;
+            margin-top: auto;
+        }
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-right: 1.5rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+        .social-links a:hover { color: var(--primary); }
+
+        .btn-block {
+            width: 100%; padding: 12px;
+            background: var(--primary); border: none;
+            border-radius: 8px; font-weight: 700;
+            cursor: pointer; color: black;
+            font-size: 1rem;
+        }
+        .btn-block:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; }
+
+        .hidden { display: none !important; }
+
+        /* Dark mode overrides for specific elements */
+        [data-theme="dark"] .upload-box { background: #151515; }
+        [data-theme="dark"] .spectrogram-wrapper { border-color: #333; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <i data-feather="cpu"></i>
+            SSTV<span>.PRO</span>
+        </div>
+        <div class="header-controls">
+            <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                <i data-feather="moon" class="theme-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <nav class="tabs">
+            <button class="tab-btn active" onclick="switchTab('encode')">Encoder</button>
+            <button class="tab-btn" onclick="switchTab('decode')">Decoder</button>
+        </nav>
+
+        <section id="encodeView" class="view-section active">
+            <div class="card">
+                <div class="enc-content">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                        <h3>Steganography Encoder</h3>
+                        <div style="display:flex; gap:15px; font-size:0.9rem;">
+                            <label style="cursor:pointer; display:flex; gap:5px;"><input type="radio" name="encMode" value="image" checked onchange="toggleEncMode()"> Hide Image</label>
+                            <label style="cursor:pointer; display:flex; gap:5px;"><input type="radio" name="encMode" value="text" onchange="toggleEncMode()"> Hide Text</label>
+                        </div>
+                    </div>
+
+                    <div class="upload-box" id="dropAudio" role="button" tabindex="0">
+                        <input type="file" id="audioInput" accept="audio/*" hidden>
+                        <i data-feather="music" style="width:32px; height:32px; color:var(--text-muted); margin-bottom:10px;"></i>
+                        <h4 id="audioLabel">1. Select Base Audio File</h4>
+                        <p style="font-size:0.8rem; margin:0">Container for your secret message</p>
+                    </div>
+
+                    <div id="imageInputArea">
+                        <div class="upload-box" id="dropImage" role="button" tabindex="0">
+                            <input type="file" id="imageInput" accept="image/*" hidden>
+                            <i data-feather="image" style="width:32px; height:32px; color:var(--text-muted); margin-bottom:10px;"></i>
+                            <h4 id="imageLabel">2. Select Secret Image</h4>
+                            <p style="font-size:0.8rem; margin:0">High contrast works best</p>
+                        </div>
+                    </div>
+
+                    <div id="textInputArea" class="hidden">
+                        <textarea id="textInput" style="width:100%; padding:1rem; background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:8px; min-height:120px;" placeholder="Type your secret message here..."></textarea>
+                    </div>
+
+                    <button id="encodeBtn" class="btn-block" onclick="startEncoding()" disabled>Generate & Download Audio</button>
+                    <div id="encodeStatus" style="text-align:center; margin-top:10px; font-size:0.9rem; color:var(--text-muted); min-height:20px;"></div>
+                </div>
+            </div>
+            
+            <div style="margin-top:2rem;">
+                <h3>How to Encode</h3>
+                <p>1. <strong>Upload Audio:</strong> Choose an MP3 or WAV file to serve as the carrier.</p>
+                <p>2. <strong>Choose Secret:</strong> Upload an image or type text. This data is converted into sound waves in the 15kHz-20kHz range.</p>
+                <p>3. <strong>Download:</strong> Get your new WAV file. It sounds like normal audio, but contains your hidden visual data.</p>
+            </div>
+        </section>
+
+        <section id="decodeView" class="view-section">
+            <div class="card" style="border:none; overflow:hidden;">
+                <div class="spectrogram-wrapper" id="specWrapper">
+                    <canvas id="specCanvas"></canvas>
+                    
+                    <div id="decodePlaceholder" class="placeholder-state">
+                        <div style="width:60px; height:60px; border:2px solid var(--primary); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:1rem; animation:pulse 2s infinite">
+                            <i data-feather="unlock" style="color:var(--text)"></i>
+                        </div>
+                        <h3>No Audio Signal</h3>
+                        <p>Upload a file to view its spectral data</p>
+                        <button onclick="document.getElementById('decodeInput').click()" style="background:var(--text); color:var(--bg); padding:8px 20px; border-radius:20px; border:none; cursor:pointer; font-weight:600;">Load Audio</button>
+                        <input type="file" id="decodeInput" accept="audio/*" hidden>
+                    </div>
+                </div>
+
+                <div class="controls-bar">
+                    <div style="display:flex; align-items:center; gap:1.5rem;">
+                        <button class="btn-play" id="playBtn" onclick="togglePlayback()" disabled>
+                            <i data-feather="play"></i>
+                        </button>
+                        <div style="flex:1;">
+                            <input type="range" class="prog-track" id="seekBar" value="0" min="0" step="0.1" disabled oninput="handleSeek(this.value)">
+                            <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted); margin-top:5px;">
+                                <span id="timeDisplay">0:00 / 0:00</span>
+                                <span>Resolution: 4k FFT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:1rem; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); padding-top:1rem;">
+                        <div style="font-size:0.9rem;">
+                            <span style="color:var(--text-muted)">Speed: </span>
+                            <button onclick="setSpeed(1)" style="background:none; border:none; color:var(--text); font-weight:bold; cursor:pointer;">1x</button>
+                            <button onclick="setSpeed(1.5)" style="background:none; border:none; color:var(--text-muted); cursor:pointer;">1.5x</button>
+                        </div>
+                        <button onclick="resetDecoder()" style="background:transparent; border:1px solid var(--border); color:var(--text); padding:5px 10px; border-radius:5px; cursor:pointer; font-size:0.85rem;">
+                            Reset / Decode New
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:2rem;">
+                <h3>Decoding Instructions</h3>
+                <p>The decoder visualizes sound frequencies. Hidden images usually appear in the high-frequency range (top of the spectrogram). Watch for distinct geometric shapes or text scrolling from right to left.</p>
+            </div>
+        </section>
+
+        <article class="seo-content">
+            <div class="seo-grid">
+                <div>
+                    <h2>What is Audio Steganography?</h2>
+                    <p>Audio Steganography is the science of hiding information within sound files. Unlike cryptography, which scrambles a message, steganography hides the existence of the message entirely. This tool uses <strong>Spectrographic Steganography</strong>, where images or text are converted into audio frequencies.</p>
+                </div>
+                <div>
+                    <h2>How It Works</h2>
+                    <p>Images are mapped to the frequency domain (15kHz to 20kHz). The Y-axis of the image becomes the pitch (frequency), and the X-axis becomes time. When analyzed with a spectrogram (a visual representation of the spectrum of frequencies), the image reappears.</p>
+                </div>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Is my data secure? <i data-feather="chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes. This tool runs 100% in your browser using the Web Audio API. No files are uploaded to any server. Your audio and images never leave your device.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Why use WAV instead of MP3? <i data-feather="chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    MP3 is a "lossy" format, meaning it deletes audio data that humans can't hear to save space. Since we hide images in the frequencies humans can't hear, MP3 compression often destroys the hidden image. WAV is "lossless" and preserves the data perfectly.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Can I hide colored images? <i data-feather="chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Spectrograms are essentially monochromatic (intensity based). While we convert your image to grayscale for processing, the decoder displays intensity using a "thermal" heatmap color scheme (Black > Purple > Yellow) for better visibility.
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="brand" style="margin-bottom:1rem;">SSTV<span>.PRO</span></div>
+                <p style="font-size:0.9rem; color:var(--text-muted)">
+                    An advanced client-side audio steganography tool built for privacy and performance.
+                </p>
+            </div>
+            <div>
+                <h4 style="margin-bottom:1rem;">Developer</h4>
+                <div style="margin-bottom:0.5rem; font-weight:700;">Dippan Bhusal</div>
+                <div class="social-links">
+                    <a href="https://github.com/KDippan" target="_blank"><i data-feather="github" style="width:16px"></i> GitHub</a>
+                    <a href="https://linkedin.com/in/KDippan" target="_blank"><i data-feather="linkedin" style="width:16px"></i> LinkedIn</a>
+                    <a href="mailto:Dippan.connect@gmail.com"><i data-feather="mail" style="width:16px"></i> Email</a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:3rem; font-size:0.8rem; color:var(--text-muted);">
+            &copy; 2026 SSTV Pro. All rights reserved.
+        </div>
+    </footer>
+
+    <canvas id="procCanvas" style="display:none"></canvas>
+
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="dippanbhusal" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FFD700" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+    <script>
+        // --- THEME SYSTEM ---
+        const themeBtn = document.querySelector('.theme-btn');
+        const themeIcon = themeBtn.querySelector('.theme-icon');
+        
+        function initTheme() {
+            const saved = localStorage.getItem('theme') || 'system';
+            applyTheme(saved);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            let next = 'light';
+            if (current === 'light') next = 'dark';
+            else if (current === 'dark') next = 'system';
+            
+            applyTheme(next);
+            localStorage.setItem('theme', next);
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            if (theme === 'dark') themeIcon.setAttribute('data-feather', 'sun');
+            else if (theme === 'light') themeIcon.setAttribute('data-feather', 'moon');
+            else themeIcon.setAttribute('data-feather', 'monitor');
+            
+            if (theme === 'system') {
+                const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.style.setProperty('color-scheme', sysDark ? 'dark' : 'light');
+            }
+            
+            feather.replace();
+        }
+        
+        initTheme();
+
+        // --- APP STATE ---
+        const state = {
+            audioBuffer: null,
+            decodeCtx: null,
+            source: null,
+            gain: null,
+            analyser: null,
+            isPlaying: false,
+            playbackRate: 1.0,
+            startTime: 0,
+            animId: null,
+            isSeeking: false
+        };
+
+        // --- NAVIGATION ---
+        function switchTab(view) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(view + 'View').classList.add('active');
+            const btns = document.querySelectorAll('.tab-btn');
+            if(view === 'encode') btns[0].classList.add('active');
+            else btns[1].classList.add('active');
+
+            if(view === 'decode') resizeCanvas();
+        }
+
+        function resizeCanvas() {
+            setTimeout(() => {
+                const c = document.getElementById('specCanvas');
+                const w = document.getElementById('specWrapper');
+                if(w.clientWidth > 0) { c.width = w.clientWidth; c.height = w.clientHeight; }
+            }, 50);
+        }
+        window.onresize = () => { if(document.getElementById('decodeView').classList.contains('active')) resizeCanvas(); };
+
+        // --- ENCODER LOGIC ---
+        function toggleEncMode() {
+            const val = document.querySelector('input[name="encMode"]:checked').value;
+            const img = document.getElementById('imageInputArea');
+            const txt = document.getElementById('textInputArea');
+            if(val === 'image') { img.classList.remove('hidden'); txt.classList.add('hidden'); }
+            else { img.classList.add('hidden'); txt.classList.remove('hidden'); }
+            validateEnc();
+        }
+
+        const setupDrop = (id, inputId) => {
+            const box = document.getElementById(id);
+            const input = document.getElementById(inputId);
+            box.onclick = () => input.click();
+            box.onkeydown = (e) => { if(e.key === 'Enter') input.click(); }
+            input.onchange = (e) => handleFile(e.target.files[0], inputId);
+        };
+
+        async function handleFile(file, type) {
+            if(!file) return;
+            if(type === 'audioInput') {
+                document.getElementById('audioLabel').innerText = file.name;
+                document.getElementById('dropAudio').classList.add('has-file');
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const ab = await file.arrayBuffer();
+                state.audioBuffer = await ctx.decodeAudioData(ab);
+            } else if(type === 'imageInput') {
+                document.getElementById('imageLabel').innerText = file.name;
+                document.getElementById('dropImage').classList.add('has-file');
+            } else if(type === 'decodeInput') {
+                document.getElementById('decodePlaceholder').classList.add('hidden');
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                state.decodeCtx = ctx;
+                const ab = await file.arrayBuffer();
+                state.audioBuffer = await ctx.decodeAudioData(ab);
+                
+                document.getElementById('playBtn').disabled = false;
+                const sb = document.getElementById('seekBar');
+                sb.disabled = false;
+                sb.max = state.audioBuffer.duration;
+                updateTime(0);
+                togglePlayback();
+            }
+            validateEnc();
+        }
+
+        setupDrop('dropAudio', 'audioInput');
+        setupDrop('dropImage', 'imageInput');
+        document.getElementById('textInput').oninput = validateEnc;
+        document.getElementById('decodeInput').onchange = (e) => handleFile(e.target.files[0], 'decodeInput');
+
+        function validateEnc() {
+            const hasAud = !!state.audioBuffer;
+            const mode = document.querySelector('input[name="encMode"]:checked').value;
+            const hasCon = mode === 'image' ? document.getElementById('dropImage').classList.contains('has-file') : document.getElementById('textInput').value.length > 0;
+            document.getElementById('encodeBtn').disabled = !(hasAud && hasCon);
+        }
+
+        async function startEncoding() {
+            const btn = document.getElementById('encodeBtn');
+            const status = document.getElementById('encodeStatus');
+            btn.disabled = true;
+            status.innerText = "Encoding... (Please wait)";
+
+            setTimeout(async () => {
+                try {
+                    const mode = document.querySelector('input[name="encMode"]:checked').value;
+                    const cvs = document.getElementById('procCanvas');
+                    const ctx = cvs.getContext('2d');
+                    const res = 128; 
+
+                    let pixels, w, h;
+
+                    if(mode === 'image') {
+                        const img = new Image();
+                        img.src = URL.createObjectURL(document.getElementById('imageInput').files[0]);
+                        await new Promise(r => img.onload = r);
+                        w = Math.floor(img.width * (res / img.height));
+                        h = res;
+                        cvs.width = w; cvs.height = h;
+                        ctx.drawImage(img, 0, 0, w, h);
+                    } else {
+                        const txt = document.getElementById('textInput').value;
+                        ctx.font = "bold 80px sans-serif";
+                        w = Math.ceil(ctx.measureText(txt).width) + 40;
+                        h = res;
+                        cvs.width = w; cvs.height = h;
+                        ctx.fillStyle = "black"; ctx.fillRect(0,0,w,h);
+                        ctx.fillStyle = "white"; ctx.textBaseline = "middle"; ctx.fillText(txt, 20, h/2);
+                    }
+
+                    pixels = ctx.getImageData(0,0,w,h).data;
+
+                    const offCtx = new OfflineAudioContext(1, state.audioBuffer.length, state.audioBuffer.sampleRate);
+                    const src = offCtx.createBufferSource();
+                    src.buffer = state.audioBuffer;
+                    const gain = offCtx.createGain();
+                    gain.gain.value = 0.8; 
+                    src.connect(gain); gain.connect(offCtx.destination);
+                    src.start();
+
+                    const minF = 14000, maxF = 21000;
+                    const colTime = 1/60; 
+                    const sr = state.audioBuffer.sampleRate;
+                    const msgBuf = offCtx.createBuffer(1, Math.ceil(w * colTime * sr), sr);
+                    const data = msgBuf.getChannelData(0);
+
+                    for(let x=0; x<w; x++) {
+                        const start = Math.floor(x * colTime * sr);
+                        const end = Math.floor((x+1) * colTime * sr);
+                        for(let i=0; i<(end-start); i++) {
+                            let val = 0;
+                            const t = i/sr;
+                            for(let y=0; y<h; y++) {
+                                const pIdx = ((h-1-y)*w + x)*4;
+                                const b = pixels[pIdx];
+                                if(b > 20) {
+                                    const freq = minF + (y/h)*(maxF-minF);
+                                    val += (b/255 * 0.02) * Math.sin(2*Math.PI*freq*t);
+                                }
+                            }
+                            if(start+i < data.length) data[start+i] = val;
+                        }
+                    }
+
+                    const msgSrc = offCtx.createBufferSource();
+                    msgSrc.buffer = msgBuf;
+                    msgSrc.connect(offCtx.destination);
+                    msgSrc.start();
+
+                    const rendered = await offCtx.startRendering();
+                    const wav = bufferToWave(rendered);
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(wav);
+                    link.download = "sstv_encoded.wav";
+                    link.click();
+                    
+                    status.innerText = "Success! File Downloaded.";
+                    btn.disabled = false;
+                } catch(e) {
+                    console.error(e);
+                    status.innerText = "Error: " + e.message;
+                    btn.disabled = false;
+                }
+            }, 50);
+        }
+
+        // --- DECODER LOGIC ---
+        function togglePlayback() {
+            if(state.isPlaying) {
+                state.decodeCtx.suspend();
+                state.isPlaying = false;
+            } else {
+                if(state.decodeCtx.state === 'suspended') state.decodeCtx.resume();
+                else playFrom(parseFloat(document.getElementById('seekBar').value));
+                state.isPlaying = true;
+                visualize();
+            }
+            updateBtnState();
+        }
+
+        function resetDecoder() {
+            if(state.source) try{state.source.stop()}catch(e){}
+            state.isPlaying = false;
+            const cvs = document.getElementById('specCanvas');
+            cvs.getContext('2d').clearRect(0,0,cvs.width, cvs.height);
+            document.getElementById('decodePlaceholder').classList.remove('hidden');
+            document.getElementById('playBtn').disabled = true;
+            document.getElementById('seekBar').disabled = true;
+            document.getElementById('seekBar').value = 0;
+            document.getElementById('decodeInput').value = "";
+            updateTime(0);
+            updateBtnState();
+        }
+
+        function handleSeek(val) {
+            state.isSeeking = true;
+            updateTime(val);
+            if(state.seekTimeout) clearTimeout(state.seekTimeout);
+            state.seekTimeout = setTimeout(() => {
+                playFrom(parseFloat(val));
+                state.isSeeking = false;
+            }, 100);
+        }
+
+        function playFrom(time) {
+            if(state.source) try{state.source.stop()}catch(e){}
+            
+            const cvs = document.getElementById('specCanvas');
+            const ctx = cvs.getContext('2d');
+            ctx.fillStyle = "black"; ctx.fillRect(0,0,cvs.width, cvs.height);
+
+            state.source = state.decodeCtx.createBufferSource();
+            state.source.buffer = state.audioBuffer;
+            state.source.playbackRate.value = state.playbackRate;
+            state.analyser = state.decodeCtx.createAnalyser();
+            state.analyser.fftSize = 4096;
+            state.analyser.smoothingTimeConstant = 0;
+
+            state.source.connect(state.analyser);
+            state.analyser.connect(state.decodeCtx.destination);
+            state.startTime = state.decodeCtx.currentTime - (time / state.playbackRate);
+            state.source.start(0, time);
+            state.isPlaying = true;
+
+            state.source.onended = () => {
+                const curr = (state.decodeCtx.currentTime - state.startTime)*state.playbackRate;
+                if(curr >= state.audioBuffer.duration - 0.1) {
+                    state.isPlaying = false;
+                    updateBtnState();
+                }
+            };
+            updateBtnState();
+            visualize();
+        }
+
+        function visualize() {
+            if(!state.isPlaying) return;
+            state.animId = requestAnimationFrame(visualize);
+            const cvs = document.getElementById('specCanvas');
+            if(cvs.width === 0) return;
+
+            const curr = (state.decodeCtx.currentTime - state.startTime)*state.playbackRate;
+            if(!state.isSeeking) {
+                document.getElementById('seekBar').value = curr;
+                updateTime(curr);
+            }
+
+            const ctx = cvs.getContext('2d', { willReadFrequently: true });
+            const w = cvs.width, h = cvs.height;
+            const temp = ctx.getImageData(1,0, w-1, h);
+            ctx.putImageData(temp, 0,0);
+
+            const data = new Uint8Array(state.analyser.frequencyBinCount);
+            state.analyser.getByteFrequencyData(data);
+
+            const bins = state.analyser.frequencyBinCount;
+            const startBin = Math.floor(bins * 0.4); 
+            const endBin = Math.floor(bins * 0.95);
+            const range = endBin - startBin;
+
+            for(let y=0; y<h; y++) {
+                const pct = 1 - (y/h);
+                const idx = startBin + Math.floor(pct * range);
+                let val = data[idx] * 1.5;
+                if(val > 255) val = 255;
+
+                if(val < 20) {
+                    ctx.fillStyle = "black";
+                } else {
+                    const r = val;
+                    const g = val > 128 ? (val-128)*2 : 0;
+                    const b = val > 200 ? (val-200)*4 : 0;
+                    ctx.fillStyle = `rgb(${r},${g},${b})`;
+                }
+                ctx.fillRect(w-2, y, 2, 1);
+            }
+        }
+
+        function setSpeed(r) { 
+            state.playbackRate = r; 
+            if(state.source) state.source.playbackRate.value = r;
+            if(state.isPlaying) {
+                const curr = parseFloat(document.getElementById('seekBar').value);
+                state.startTime = state.decodeCtx.currentTime - (curr/r);
+            }
+        }
+        function updateTime(t) {
+            const d = state.audioBuffer ? state.audioBuffer.duration : 0;
+            const fmt = s => `${Math.floor(s/60)}:${Math.floor(s%60).toString().padStart(2,'0')}`;
+            document.getElementById('timeDisplay').innerText = `${fmt(t)} / ${fmt(d)}`;
+        }
+        function updateBtnState() {
+            const b = document.getElementById('playBtn');
+            b.innerHTML = state.isPlaying ? '<i data-feather="pause"></i>' : '<i data-feather="play"></i>';
+            feather.replace();
+        }
+        function bufferToWave(abuffer) {
+            let numOfChan = abuffer.numberOfChannels, length = abuffer.length * numOfChan * 2 + 44, buffer = new ArrayBuffer(length), view = new DataView(buffer), channels = [], i, sample, offset = 0, pos = 0;
+            function setUint16(data) { view.setUint16(pos, data, true); pos += 2; }
+            function setUint32(data) { view.setUint32(pos, data, true); pos += 4; }
+            setUint32(0x46464952); setUint32(length - 8); setUint32(0x45564157); setUint32(0x20746d66); setUint32(16); setUint16(1); setUint16(numOfChan); setUint32(abuffer.sampleRate); setUint32(abuffer.sampleRate * 2 * numOfChan); setUint16(numOfChan * 2); setUint16(16); setUint32(0x61746164); setUint32(length - pos - 4);
+            for(i = 0; i < abuffer.numberOfChannels; i++) channels.push(abuffer.getChannelData(i));
+            while(pos < length) { for(i = 0; i < numOfChan; i++) { sample = Math.max(-1, Math.min(1, channels[i][offset])); sample = (0.5 + sample < 0 ? sample * 32768 : sample * 32767)|0; view.setInt16(pos, sample, true); pos += 2; } offset++; }
+            return new Blob([buffer], {type: "audio/wav"});
+        }
+    </script>
+</body>
+</html>
